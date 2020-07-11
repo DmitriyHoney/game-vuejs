@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue test</title>
+</head>
+
+<style>
+	body {
+		font-family: sans-serif;
+	}
+	#app {
+		text-align: center;
+	}
+	.error {
+		border: 2px solid red;
+	}
+</style>
+
+<body>
+
+	<div id="app">
+
+		<h3>
+			Угадай число от 1 до 100
+		</h3>
+		<hr>
+
+		<div v-if="isWin">
+			<p>Вы победили</p>
+		</div>
+
+		<div>
+			{{this.helpForUser}}
+		</div>
+
+		<button v-if="!isStartGame" v-on:click="initGame">
+			{{counter > 0 ? 'Начать новую игру' : 'Начать игру'}}
+		</button>
+
+		<div v-if="isStartGame">
+			<input type="text" placeholder="Введите число" v-model="inputValue" v-bind:class="validateClass">
+			<button v-on:click="checkUserAnswer">Проверить</button>
+		</div>
+
+		<p>Счётчик побед: {{counter}}</p>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="test.js"></script>
+</body>
+</html>
